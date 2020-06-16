@@ -1,4 +1,6 @@
+use std::thread;
 use structopt::StructOpt;
+
 
 /// Search for a pattern in a file and display the lines that contain it.
 #[derive(StructOpt)]
@@ -30,15 +32,23 @@ use exitfailure::ExitFailure;
 // }
 
 fn do_hard_work() {
-    for i in 1..12345 {
-        let x = 1;
-    }
+    // for i in 1..123 {
+    //     let x = 1;
+    // }
+    thread::sleep_ms(200);
+
 }
 
 fn main() {
     let pb = indicatif::ProgressBar::new(100);
     let opt = CliOptions::from_args();
     println!("Debug: {:?}, Hash Method: {:?}, Path: {:?}", opt.debug, opt.hash_method, opt.path);
+    let known_hash_methods = ["SHA256", "MD5", "SHA1"];
+    if known_hash_methods.contains(&&opt.hash_method[..]) {
+        println!("Known Hash Method: {:?}", opt.hash_method);
+    } else {
+        println!("Please Use a Known Hash Method: {:?}", known_hash_methods)
+    }
     for i in 0..100 {
         do_hard_work();
         pb.println(format!("[+] finished #{}", i));
