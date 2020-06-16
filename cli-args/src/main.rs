@@ -38,7 +38,7 @@ fn do_hard_work() {
 fn main() {
     let pb = indicatif::ProgressBar::new(100);
     let opt = CliOptions::from_args();
-    println!("{:?}", opt.debug);
+    println!("Debug: {:?}, Hash Method: {:?}, Path: {:?}", opt.debug, opt.hash_method, opt.path);
     for i in 0..100 {
         do_hard_work();
         pb.println(format!("[+] finished #{}", i));
