@@ -35,7 +35,7 @@ fn do_hard_work() {
     // for i in 1..123 {
     //     let x = 1;
     // }
-    thread::sleep_ms(200);
+    thread::sleep_ms(300);
 
 }
 
@@ -49,7 +49,7 @@ fn main() {
     } else {
         println!("Please Use a Known Hash Method: {:?}", known_hash_methods)
     }
-    for i in 0..100 {
+    for i in 0..10 {
         do_hard_work();
         pb.println(format!("[+] finished #{}", i));
         pb.inc(1);
