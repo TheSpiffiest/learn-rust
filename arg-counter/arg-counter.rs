@@ -1,4 +1,5 @@
 use std::env;
+use std::process;
 
 fn main() {
     // Nest some for loops 
@@ -26,6 +27,17 @@ fn main() {
         println!("Usage: arg-counter <number to count to>");
         std::process::exit(0);
         
+    }
+
+    // Validate that the argument is a number
+    let mut ok_to_count: bool = true;
+    for c in count_to_str.chars() {
+        ok_to_count = ok_to_count && c.is_numeric();
+    }
+
+    if !ok_to_count {
+        println!("Sorry! Parameter must be numeric");
+        process::exit(0);
     }
 
     // Convert the string to number
